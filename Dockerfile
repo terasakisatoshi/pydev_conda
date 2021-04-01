@@ -14,6 +14,8 @@ RUN apt-get update -y && \
     libopencv-dev \
     git \
     htop \
+    nano \
+    nvtop \
     tree \
     wget \
     && \
