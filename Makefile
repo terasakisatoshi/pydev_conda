@@ -7,7 +7,7 @@ build:
 	docker-compose build
 
 test:
-	docker-compose run --rm python poetry run pytest
+	docker-compose run --rm python bash -c "pytest"
 
 clean:
 	rm -rf .ipynb_checkpoints playground/notebooks/.ipynb_checkpoints
