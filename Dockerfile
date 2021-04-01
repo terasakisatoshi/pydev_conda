@@ -89,5 +89,6 @@ RUN mkdir -p ${HOME}/.jupyter/lab/user-settings/@jupyterlab/notebook-extension &
     ' >> ${HOME}/.jupyter/lab/user-settings/@jupyterlab/notebook-extension/tracker.jupyterlab-settings
 
 EXPOSE 8888
+WORKDIR /work/
 
 ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "pydev_conda"]

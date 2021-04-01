@@ -8,19 +8,17 @@ services:
     volumes:
       - ./:/work
       - ~/dataset:/home/jovyan/dataset
-  
-  jupyter:
+
+  python-gpu:
     #build: ./
     image: pydev-conda
     shm_size: '8gb'
-    container_name: pydev-conda-jupyter
+    runtime: nvidia
+    container_name: pydev-conda-jupyter-gpu
     volumes:
       - ./:/work
       - ~/dataset:/home/jovyan/dataset
-    ports:
-      - "8888:8888"
-    command: /bin/bash -c "poetry run jupyter notebook --notebook-dir /work --ip=0.0.0.0 --allow-root"
-
+  
   lab:
     #build: ./
     image: pydev-conda
