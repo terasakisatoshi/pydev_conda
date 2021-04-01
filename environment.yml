@@ -1,0 +1,17 @@
+name: pydev_conda
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python==3.8.*
+  - numpy
+  - matplotlib
+  - opencv
+  - tqdm
+  - cudatoolkit
+  - pytorch 
+  - torchvision 
+  - torchaudio 
+  - cudatoolkit=11.0
+  - pip
+

@@ -1,0 +1,47 @@
+version: '3'
+services:
+  python:
+    #build: ./
+    image: pydev-conda
+    shm_size: '8gb'
+    container_name: pydev-conda-jupyter
+    volumes:
+      - ./:/work
+      - ~/dataset:/home/jovyan/dataset
+  
+  jupyter:
+    #build: ./
+    image: pydev-conda
+    shm_size: '8gb'
+    container_name: pydev-conda-jupyter
+    volumes:
+      - ./:/work
+      - ~/dataset:/home/jovyan/dataset
+    ports:
+      - "8888:8888"
+    command: /bin/bash -c "poetry run jupyter notebook --notebook-dir /work --ip=0.0.0.0 --allow-root"
+
+  lab:
+    #build: ./
+    image: pydev-conda
+    shm_size: '8gb'
+    container_name: pydev-conda-lab
+    volumes:
+      - ./:/work
+      - ~/dataset:/home/jovyan/dataset
+    ports:
+      - "8888:8888"
+    command: /bin/bash -c "poetry run jupyter lab --notebook-dir /work --ip=0.0.0.0 --allow-root"
+
+  lab-gpu:
+    #build: ./
+    image: pydev-conda
+    shm_size: '8gb'
+    container_name: pydev-conda-lab-gpu
+    runtime: nvidia
+    volumes:
+      - ./:/work
+    ports:
+      - "8888:8888"
+    command: /bin/bash -c "poetry run jupyter lab --notebook-dir /work --port 8888 --ip=0.0.0.0 --allow-root"
+
