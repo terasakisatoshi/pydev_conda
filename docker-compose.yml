@@ -29,7 +29,7 @@ services:
       - ~/dataset:/home/jovyan/dataset
     ports:
       - "8888:8888"
-    command: /bin/bash -c "poetry run jupyter lab --notebook-dir /work --ip=0.0.0.0 --allow-root"
+    command: jupyter lab --notebook-dir /work --ip=0.0.0.0 --allow-root
 
   lab-gpu:
     #build: ./
@@ -41,5 +41,5 @@ services:
       - ./:/work
     ports:
       - "8888:8888"
-    command: /bin/bash -c "poetry run jupyter lab --notebook-dir /work --port 8888 --ip=0.0.0.0 --allow-root"
+    command: jupyter lab --notebook-dir /work --port 8888 --ip=0.0.0.0 --allow-root
 
