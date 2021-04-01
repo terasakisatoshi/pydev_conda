@@ -4,6 +4,7 @@ channels:
   - pytorch
 dependencies:
   - python==3.8.*
+  - albumentations
   - numpy
   - matplotlib
   - opencv
@@ -12,6 +13,22 @@ dependencies:
   - pytorch 
   - torchvision 
   - torchaudio 
-  - cudatoolkit=11.0
+  - jupyter
+  - jupyterlab
+  - jupytext
+  - black
+  - isort
+  - autoflake
+  - mock
+  - mypy
+  - pytest
+  - ipywidgets
+  - jupyter_contrib_nbextensions
+  - jupyter_nbextensions_configurator
+  - jupyterlab_code_formatter
   - pip
-
+  - pip:
+    - lckr-jupyterlab-variableinspector
+    - pytorch-pfn-extras
+    - pytorch-ignite
+    - mypy_ipython

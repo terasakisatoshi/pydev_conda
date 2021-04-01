@@ -58,4 +58,36 @@ SHELL ["conda", "run", "-n", "pydev_conda", "/bin/bash", "-c"]
 RUN conda install -c anaconda cudatoolkit
 RUN conda install pytorch torchvision torchaudio cudatoolkit=11.0 -c pytorch
 
+# Install/enable extension for JupyterLab users
+RUN jupyter labextension install @jupyterlab/toc --no-build && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+    jupyter labextension install @z-m-k/jupyterlab_sublime --no-build && \
+    jupyter labextension install @hokyjack/jupyterlab-monokai-plus --no-build && \
+    jupyter lab build -y && \
+    jupyter lab clean -y && \
+    npm cache clean --force && \
+    rm -rf ${HOME}/.cache/yarn && \
+    rm -rf ${HOME}/.node-gyp && \
+    echo Done
+
+# Set color theme Monokai++ by default (The selection is due to my hobby)
+RUN mkdir -p ${HOME}/.jupyter/lab/user-settings/@jupyterlab/apputils-extension && echo '\
+    {\n\
+    "theme": "Monokai++"\n\
+    }\n\
+    \
+    ' >> ${HOME}/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings
+
+# Show line numbers by default
+RUN mkdir -p ${HOME}/.jupyter/lab/user-settings/@jupyterlab/notebook-extension && echo '\
+    {\n\
+    "codeCellConfig": {\n\
+    "lineNumbers": true,\n\
+    },\n\
+    }\n\
+    \
+    ' >> ${HOME}/.jupyter/lab/user-settings/@jupyterlab/notebook-extension/tracker.jupyterlab-settings
+
+EXPOSE 8888
+
 ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "pydev_conda"]
