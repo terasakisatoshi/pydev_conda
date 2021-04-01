@@ -55,4 +55,7 @@ RUN conda env create -f environment.yml
 
 SHELL ["conda", "run", "-n", "pydev_conda", "/bin/bash", "-c"]
 
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "pydev_conda", "bash"]
+RUN conda install -c anaconda cudatoolkit
+RUN conda install pytorch torchvision torchaudio cudatoolkit=11.0 -c pytorch
+
+ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "pydev_conda"]
