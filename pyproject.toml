@@ -1,0 +1,12 @@
+[tool.poetry]
+name = "pydev_conda"
+packages = [
+    { include = "pydev_conda", from = "src" },
+]
+version = "0.1.0"
+description = "mysample"
+authors = ["Satoshi Terasaki <terasakisatoshi.math@gmail.com>"]
+license = "MIT"
+
+[build-system]
+requires = ["setuptools", "wheel"]
