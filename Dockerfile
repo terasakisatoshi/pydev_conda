@@ -37,7 +37,7 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-WORKDIR ${HOME}
+WORKDIR /work
 
 USER ${NB_USER}
 
@@ -51,7 +51,7 @@ RUN curl -sLo ~/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-py38
  && conda clean -ya
 
 COPY environment.yml ${HOME}
-RUN conda env create -f environment.yml
+RUN conda env create -f ${HOME}/environment.yml
 
 SHELL ["conda", "run", "-n", "pydev_conda", "/bin/bash", "-c"]
 
