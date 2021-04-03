@@ -4,7 +4,7 @@ services:
     #build: ./
     image: pydev-conda
     shm_size: '8gb'
-    container_name: pydev-conda-jupyter
+    container_name: pydev-conda-python
     volumes:
       - ./:/work
       - ~/dataset:/home/jovyan/dataset
@@ -14,7 +14,7 @@ services:
     image: pydev-conda
     shm_size: '8gb'
     runtime: nvidia
-    container_name: pydev-conda-jupyter-gpu
+    container_name: pydev-conda-python-gpu
     volumes:
       - ./:/work
       - ~/dataset:/home/jovyan/dataset
